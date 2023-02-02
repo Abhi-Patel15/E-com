@@ -1,10 +1,10 @@
-import AdminLogin from "./AdminLogin";
+import AdminLogin from "./AdminLogin/AdminLogin";
 
 
 function App() {
   return (
    <>
-    <AdminLogin />
+   <AdminLogin />
    </>
   );
 }
