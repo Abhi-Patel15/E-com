@@ -1,1 +1,1 @@
-export const GET_LOGIN = "/api/admin/login";
+export const GET_LOGIN = "api/admin/login";

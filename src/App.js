@@ -1,10 +1,9 @@
-import AdminLogin from "./AdminLogin/AdminLogin";
-
+import RouterConfig from "./componets/Router/RouterConfig";
 
 function App() {
   return (
    <>
-   <AdminLogin />
+   <RouterConfig />
    </>
   );
 }

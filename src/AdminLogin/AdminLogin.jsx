@@ -5,9 +5,10 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { TextField } from "@mui/material";
 import { loginUser } from "../redux/store/slice";
+import { useNavigate } from "react-router-dom";
 
 const LoginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email Required"),
+  email_id: Yup.string().email("Invalid email").required("Email Required"),
   password: Yup.string()
       .min(8, "Password is Too short")
     .matches(/(?=.*[0-9])/, "Must Contain Number")
@@ -19,8 +20,9 @@ const AdminLogin = () => {
     const login = useSelector((state)=>state)
     console.log(login,"token");
      const dispatch = useDispatch();
+     const navigate = useNavigate();
   const VendorLogin = () => {
-    setRole("Vender")
+    setRole("Vendor")
   }
   const [role, setRole] = useState("Admin");
  return (
@@ -30,7 +32,7 @@ const AdminLogin = () => {
           <div className="container-fluid">
             <div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
               <div className="col mx-auto">
-                <div className="card">
+                <div className="card mt-5">
                   <div className="card-body">
                     <div className="border p-4 rounded">
                       <div className="text-center ">
@@ -39,25 +41,23 @@ const AdminLogin = () => {
                       <div className="form-body">
                         <Formik
                           initialValues={{
-                            email: "",
+                            email_id: "",
                             password: "",
                           }}
                           validationSchema={LoginSchema}
                           onSubmit={(values) => {
-                            dispatch(loginUser({values,role}))
+                            dispatch(loginUser({...values,role}))
+                            navigate("/")
                            console.log(values);
                            }}
-                       
                         >
                           {(props) => {
                             const {
                               touched,
                               errors,
                               isSubmitting,
-                              
                               values,
                               handleChange,
-                              handleBlur,
                               handleSubmit,
                             } = props;
                             return (
@@ -72,21 +72,21 @@ const AdminLogin = () => {
                                     </label>
                                     <TextField
                                       fullWidth
-                                      name="email"
+                                      name="email_id"
                                       id="inputEmailAddress"
                                       type="text"
                                       placeholder="Enter your email"
-                                      value={values.email}
+                                      value={values.email_id}
                                       onChange={handleChange}
                                       className={
-                                        errors.email &&
-                                        touched.email &&
+                                        errors.email_id &&
+                                        touched.email_id &&
                                         "error" &&
                                         "form-control"
                                       }
                                     />
                                   </div>
-                                  {errors.email && touched.email && (
+                                  {errors.email_id && touched.email_id && (
                                     <div
                                       className="input feedback"
                                       style={{
@@ -95,7 +95,7 @@ const AdminLogin = () => {
                                         color: "red",
                                       }}
                                     >
-                                      {errors.email}
+                                      {errors.email_id}
                                     </div>
                                   )}
                                 </div>
@@ -116,7 +116,6 @@ const AdminLogin = () => {
                                       placeholder="Enter your password"
                                       value={values.password}
                                       onChange={handleChange}
-
                                       className={
                                         errors.password &&
                                         touched.password &&
@@ -142,7 +141,7 @@ const AdminLogin = () => {
                                   <div className="form-check form-switch">
                                     <div className="col-md text-start">
                                     <div className="col-md-6 pt-4 ">
-                            <a onClick={VendorLogin}>
+                            <a  onClick={VendorLogin}>
                               {" "}
                               {role === "Vendor" ? "" : "Sign In as Vendor"}
                             </a>

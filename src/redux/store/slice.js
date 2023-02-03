@@ -12,6 +12,7 @@ export const slice = createSlice ({
         },
         setLoginUser: (state, action ) => {
             state.Login = action.payload;
+
         },
     },
 });
