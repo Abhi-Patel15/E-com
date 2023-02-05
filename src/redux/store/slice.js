@@ -14,12 +14,106 @@ export const slice = createSlice ({
             state.Login = action.payload;
 
         },
+        
+        //dasahbord
+        counOfData: (state , action) => {
+            return {
+                ...state,
+                action,
+            };
+        },
+        setCounOfData: (state, action ) => {
+            state.countOfData = action.payload;
+        },
+
+        graphOfData: (state , action) => {
+            return {
+                ...state,
+                action,
+            };
+        },
+        setGraphOfData: (state, action ) => {
+            state.GraphOfData = action.payload;
+        },
+        
+        registrationOfTabel: (state , action) => {
+            return {
+                ...state,
+                action,
+            };
+        },
+        setRegistrationOfTabel: (state, action ) => {
+            state.RegistrationData = action.payload;
+        },
+        listOfTabel: (state , action) => {
+            return {
+                ...state,
+                action,
+            };
+        },
+        setListOfTabel: (state, action ) => {
+            state.ListOfOrder = action.payload;
+        },
+
+        //category
+        addCategory: (state , action) => {
+            return {
+                ...state,
+                action,
+            };
+        },
+        setAddCategory: (state, action ) => {
+            state.AddCategory = action.payload;
+        },
+        listOfCategory: (state , action) => {
+            return {
+                ...state,
+                action,
+            };
+        },
+        setListOfCategory: (state, action ) => {
+            state.ListOfCategroy = action.payload;
+        },
+        editCategory: (state , action) => {
+            return {
+                ...state,
+                action,
+            };
+        },
+        setEditCategory: (state, action ) => {
+            state.EditCategroy = action.payload;
+        },
+        deleteCategory: (state , action) => {
+            return {
+                ...state,
+                action,
+            };
+        },
+        setDeleteCategory: (state, action ) => {
+            state.DeleteCategroy = action.payload;
+        },
     },
 });
 
 export const {
     loginUser,
-    setLoginUser
+    setLoginUser,
+    listOfTabel,
+    setListOfTabel,
+    counOfData,
+    setCounOfData,
+    graphOfData,
+    setGraphOfData,
+    registrationOfTabel,
+    setRegistrationOfTabel,
+    addCategory,
+    setAddCategory,
+    listOfCategory,
+    setListOfCategory,
+    editCategory,
+    setEditCategory,
+    deleteCategory,
+    setDeleteCategory
 } = slice.actions;
 
 export default slice.reducer;

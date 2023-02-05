@@ -16,9 +16,6 @@ const LoginSchema = Yup.object().shape({
 });
 
 const AdminLogin = () => {
-    
-    const login = useSelector((state)=>state)
-    console.log(login,"token");
      const dispatch = useDispatch();
      const navigate = useNavigate();
   const VendorLogin = () => {
