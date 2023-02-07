@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 $(function() {
 	"use strict";
 	var e = {
@@ -77,6 +78,7 @@ $(function() {
 			}
 		}
 	};
+	// eslint-disable-next-line no-undef
 	new ApexCharts(document.querySelector("#w-chart1"), e).render();
 	e = {
 		series: [{

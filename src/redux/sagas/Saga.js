@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import { put, takeEvery, all, call } from "redux-saga/effects";
+import { setToken } from "../../Common/Cookies/Cookies";
 import { ToastNotify } from "../../Common/Tosti/Toast";
-import {  deleteCategoryServices, getCounOfTabelServices,
+import {  deleteCategoryServices,
+          getCounOfTabelServices,
           getGraphOfTabelServices, 
           getListOfTabelServices,
          getLoginServices, 
@@ -27,7 +30,6 @@ import { addCategory, counOfData,
         setRegistrationOfTabel} from "../store/slice";
 
 function* useAuthUserSaga(props) {
-console.log(props,"propssaga");
     try {
       const body = {
 
@@ -37,17 +39,20 @@ console.log(props,"propssaga");
       };
       const response = yield call(getLoginServices, body);
     console.log(response,"responseAuthSaga");
-      yield call(setLoginUser, response?.data?.token);
-      yield localStorage.setItem("token",response?.data?.token);
-      yield localStorage.getItem("token",response?.data?.token);
+    console.log(response,"res");
+      yield call(setToken, response?.data?.token);
+      // yield localStorage.setItem("token",response?.data?.token);
+      // yield localStorage.getItem("token",response?.data?.token);
       // localStorage.removeItem("token",response?.data?.token);
       if (response?.data?.token) {
         ToastNotify(response?.message, "success");
       }
+      return response;
     } catch (error) {
       ToastNotify(error?.message, "error");
-      return;
+     
     }
+  
   }
 // function* loginSaga (props) {
 //     console.log(props.payload,"propsSaga")
