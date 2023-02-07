@@ -23,7 +23,7 @@ export const slice = createSlice ({
             };
         },
         setCounOfData: (state, action ) => {
-            state.countOfData = action.payload;
+            state.countOfDatas = action.payload;
         },
 
         graphOfData: (state , action) => {
@@ -33,7 +33,7 @@ export const slice = createSlice ({
             };
         },
         setGraphOfData: (state, action ) => {
-            state.GraphOfData = action.payload;
+            state.GraphOfDatas = action.payload;
         },
         
         registrationOfTabel: (state , action) => {
@@ -43,8 +43,9 @@ export const slice = createSlice ({
             };
         },
         setRegistrationOfTabel: (state, action ) => {
-            state.RegistrationData = action.payload;
+            state.RegistrationDatas = action.payload;
         },
+
         listOfTabel: (state , action) => {
             return {
                 ...state,
@@ -52,7 +53,7 @@ export const slice = createSlice ({
             };
         },
         setListOfTabel: (state, action ) => {
-            state.ListOfOrder = action.payload;
+            state.ListOfOrders = action.payload;
         },
 
         //category
@@ -92,6 +93,17 @@ export const slice = createSlice ({
         setDeleteCategory: (state, action ) => {
             state.DeleteCategroy = action.payload;
         },
+        //PRODUCT
+
+        addProduct: (state , action) => {
+            return {
+                ...state,
+                action,
+            };
+        },
+        setAddProduct: (state, action ) => {
+            state.DeleteCategroy = action.payload;
+        },
     },
 });
 
@@ -113,7 +125,8 @@ export const {
     editCategory,
     setEditCategory,
     deleteCategory,
-    setDeleteCategory
+    setDeleteCategory,
+    
 } = slice.actions;
 
 export default slice.reducer;

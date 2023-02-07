@@ -1,19 +1,27 @@
 import { DELETE_CATEGORY,
         GET_CARD_COUNOFDATA, 
         GET_GRAPH_GRAPHOFDATA, 
-        GET_GRAPH_REGISTRATIONDATA, 
         GET_LOGIN,
+         GET_REGISTRATIONDATA,
          GET_TABAL_LISTOFORDER, 
         POST_CATEGORY_LIST, 
         POST_EDIT_CATEGORY_LIST, 
         PUT_EDIT_CATEGORY } from "../api/apiEndpoints";
 import { API } from "../api/generalService";
+import { getToken } from "../Common/Cookies/Cookies";
 
 const url = "http://mahaswari.com:1337";
+const  token= getToken();
 
+console.log(token,"tokenssssservices");
 export const getLoginServices = async (params) => {
     try {
-      const response = await API.post(`${url}/${GET_LOGIN}`,params);
+      const response = await API.post(`${url}/${GET_LOGIN}`,params, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+      }
+      });
       return response.data;
     } catch (e) {
       return e;
@@ -21,33 +29,53 @@ export const getLoginServices = async (params) => {
   };
 
   //dashbord
- export const getCounOfTabelServices = async (props) => {
+ export const getCounOfTabelServices = async () => {
     try {
-      const response = await API.get(`${url}/${GET_CARD_COUNOFDATA}`,props);
+      const response = await API.get(`${url}/${GET_CARD_COUNOFDATA}`,{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+      }
+      });
       return response.data;
     } catch (e) {
       return e;
     }
   };
-  export const getGraphOfTabelServices = async (props) => {
+  export const getGraphOfTabelServices = async () => {
     try {
-      const response = await API.get(`${url}/${GET_GRAPH_GRAPHOFDATA}`,props);
+      const response = await API.get(`${url}/${GET_GRAPH_GRAPHOFDATA}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+      }
+      });
       return response.data;
     } catch (e) {
       return e;
     }
   };
-  export const getRegistraionOfTabelServices = async (props) => {
+  export const getRegistraionOfTabelServices = async () => {
     try {
-      const response = await API.get(`${url}/${GET_GRAPH_REGISTRATIONDATA}`,props);
+      const response = await API.get(`${url}/${GET_REGISTRATIONDATA }`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+      }
+      });
       return response.data;
     } catch (e) {
       return e;
     }
   };
-  export const getListOfTabelServices = async (props) => {
+  export const getListOfTabelServices = async () => {
     try {
-      const response = await API.get(`${url}/${GET_TABAL_LISTOFORDER}`,props);
+      const response = await API.get(`${url}/${GET_TABAL_LISTOFORDER}`,{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+      }
+      });
       return response.data;
     } catch (e) {
       return e;

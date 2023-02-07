@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TextField } from "@mui/material";
 import { loginUser } from "../redux/store/slice";
 import { useNavigate } from "react-router-dom";
+import { getToken } from "../Common/Cookies/Cookies";
 
 const LoginSchema = Yup.object().shape({
   email_id: Yup.string().email("Invalid email").required("Email Required"),
@@ -16,12 +17,13 @@ const LoginSchema = Yup.object().shape({
 });
 
 const AdminLogin = () => {
+  const [role, setRole] = useState("Admin");
      const dispatch = useDispatch();
      const navigate = useNavigate();
   const VendorLogin = () => {
     setRole("Vendor")
   }
-  const [role, setRole] = useState("Admin");
+  const token = getToken();
  return (
     <div className="bg-login">
       <div className="wrapper">
@@ -44,7 +46,9 @@ const AdminLogin = () => {
                           validationSchema={LoginSchema}
                           onSubmit={(values) => {
                             dispatch(loginUser({...values,role}))
-                            navigate("/")
+                            if (token !== undefined) {
+                           navigate("/");
+                            }
                            console.log(values);
                            }}
                         >
