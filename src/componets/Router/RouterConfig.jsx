@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import AdminLogin from "../../AdminLogin/AdminLogin";
 import Banners from "../Banners/Banners";
+import AddAndEdit from "../Category/AddAndEdit";
 import Category from "../Category/Category";
 import Dashboard from "../Dashboard/Dashboard";
 import Order from "../Order/Order";
@@ -12,9 +13,11 @@ const RouterConfig = () => {
     <>
         <Router>
             <Routes>
-            <Route path="login" element={<AdminLogin />} />
+            <Route path="/login" element={<AdminLogin />} />
             <Route path="/" element={<Dashboard />} />
-            <Route path="category" element={<Category />} />
+            <Route path="/category" element={<Category />} />
+             <Route path="/addCategory" element={<AddAndEdit />} /> 
+            <Route path="/editCategory/:id" element={<AddAndEdit />} />
             <Route path="order" element={<Order />} />
             <Route path="product" element={<Product />} />
             <Route path="banner" element={<Banners />} />

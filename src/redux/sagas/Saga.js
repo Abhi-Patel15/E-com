@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+
 import { put, takeEvery, all, call } from "redux-saga/effects";
 import { setToken } from "../../Common/Cookies/Cookies";
 import { ToastNotify } from "../../Common/Tosti/Toast";
@@ -26,7 +26,6 @@ import { addCategory, counOfData,
         setGraphOfData, 
         setListOfCategory, 
         setListOfTabel, 
-        setLoginUser, 
         setRegistrationOfTabel} from "../store/slice";
 
 function* useAuthUserSaga(props) {
@@ -100,7 +99,6 @@ function*registraionSaga (){
 function*listOfSaga () {
   try {
     const response = yield call (getListOfTabelServices);
-    console.log(response,"res");
     yield put (setListOfTabel(response));
     return response;
   }catch (e) {
@@ -109,9 +107,10 @@ function*listOfSaga () {
 }
 
 // Catgory
-function*addCategorySaga () {
+function*addCategorySaga (props) {
+  console.log(props.payload,"prosssss")
   try{
-    const response = yield call (postAddCategoryServices)
+    const response = yield call (postAddCategoryServices,props.payload)
     yield put (setAddCategory(response))
     return response;
   }catch(e) {
@@ -119,9 +118,14 @@ function*addCategorySaga () {
   }
 }
 
-function*listCategorySaga () {
+function*listCategorySaga ( props) {
+  const model = {
+    model: "Category",
+    condition: { is_archived: false },
+    limit: 500,
+  };
   try{
-    const response = yield call (postListOfCategoryServices)
+    const response = yield call (postListOfCategoryServices,model)
     yield put (setListOfCategory(response))
     return response;
   }catch(e) {
@@ -138,9 +142,11 @@ function*editCategorySaga () {
     console.log(e);
   }
 }
-function*deleteCategorySaga () {
+function*deleteCategorySaga (props) {
+  console.log(props.payload,"payy")
   try{
-    const response = yield call (deleteCategoryServices)
+   
+    const response = yield call (deleteCategoryServices,props.payload)
     yield put (setDeleteCategory(response))
     return response;
   }catch(e) {

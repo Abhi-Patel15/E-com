@@ -4,8 +4,8 @@ import { DELETE_CATEGORY,
         GET_LOGIN,
          GET_REGISTRATIONDATA,
          GET_TABAL_LISTOFORDER, 
-        POST_CATEGORY_LIST, 
-        POST_EDIT_CATEGORY_LIST, 
+        POST_CATEGORY_LIST,  
+        POST_LISTOFCATEGORY,  
         PUT_EDIT_CATEGORY } from "../api/apiEndpoints";
 import { API } from "../api/generalService";
 import { getToken } from "../Common/Cookies/Cookies";
@@ -13,7 +13,6 @@ import { getToken } from "../Common/Cookies/Cookies";
 const url = "http://mahaswari.com:1337";
 const  token= getToken();
 
-console.log(token,"tokenssssservices");
 export const getLoginServices = async (params) => {
     try {
       const response = await API.post(`${url}/${GET_LOGIN}`,params, {
@@ -84,8 +83,14 @@ export const getLoginServices = async (params) => {
 
   //Category
   export const postAddCategoryServices = async (props) => {
+    console.log(props,"props");
     try {
-      const response = await API.post(`${url}/${POST_CATEGORY_LIST}`,props);
+      const response = await API.post(`${url}/${POST_CATEGORY_LIST}`,props,{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+      }
+      });
       return response.data;
     } catch (e) {
       return e;
@@ -93,24 +98,40 @@ export const getLoginServices = async (params) => {
   };
   export const postListOfCategoryServices = async (props) => {
     try {
-      const response = await API.post(`${url}/${POST_EDIT_CATEGORY_LIST}`,props);
+      const response = await API.post(`${url}/${POST_LISTOFCATEGORY}`,props,{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+      }
+      });
       return response.data;
     } catch (e) {
       return e;
     }
   };
-  export const putEditCategoryServices = async (props) => {
+  export const putEditCategoryServices = async (data,id) => {
     try {
-      const response = await API.put(`${url}/${PUT_EDIT_CATEGORY}`,props);
+      const response = await API.put(`${url}/${PUT_EDIT_CATEGORY}/${id.id}`,data,{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token
+      }
+      });
       return response.data;
     } catch (e) {
       return e;
     }
 
   };
-  export const deleteCategoryServices = async (props) => {
+  export const deleteCategoryServices = async (id) => {
+    console.log(id,"idddd")
     try {
-      const response = await API.put(`${url}/${DELETE_CATEGORY}`,props);
+      const response = await API.put(`${url}/${DELETE_CATEGORY}/${id.id}`,id.data,{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token,
+      }
+      });
       return response.data;
     } catch (e) {
       return e;

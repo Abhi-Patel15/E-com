@@ -18,8 +18,6 @@ const Dashboard = () => {
   const GraphOfDatas = useSelector((state)=>state?.reducer?.GraphOfDatas?.data)
   const ListOfOrders =useSelector((state)=>state?.reducer?.ListOfOrders?.data)
   const RegistrationDtatas =useSelector((state)=>state?.reducer?.RegistrationDatas?.data)
-//  console.log(counOfDatas,"counOfDatas")
-//  console.log(GraphOfDatas,"GraphOfDatas");
 
  console.log(ListOfOrders,"ListOfOrders");
 
