@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { TextField } from "@mui/material";
 import { loginUser } from "../redux/store/slice";
 import { useNavigate } from "react-router-dom";
@@ -46,7 +46,7 @@ const AdminLogin = () => {
                           validationSchema={LoginSchema}
                           onSubmit={(values) => {
                             dispatch(loginUser({...values,role}))
-                            if (token !== undefined) {
+                            if (token != undefined) {
                            navigate("/");
                             }
                            console.log(values);

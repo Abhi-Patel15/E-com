@@ -85,7 +85,7 @@ export const slice = createSlice ({
             state.EditCategroy = action.payload;
         },
         deleteCategory: (state , action) => {
-            return {
+           return {
                 ...state,
                 action,
             };

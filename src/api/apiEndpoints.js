@@ -8,9 +8,9 @@ export const GET_TABAL_LISTOFORDER = "api/admin/dashBoard/listOfOrder";
 
 //category
 export const POST_CATEGORY_LIST = "api/category/addCategory";
-export const POST_EDIT_CATEGORY_LIST = "api/category/listOfCategory";
-export const PUT_EDIT_CATEGORY = "api/category/editCategory/:id";
-export const DELETE_CATEGORY = "api/category/deleteCategory/:id";
+export const POST_LISTOFCATEGORY = "api/category/listOfCategory";
+export const PUT_EDIT_CATEGORY = "api/category/editCategory";
+export const DELETE_CATEGORY = "api/category/deleteCategory";
 
 //product
 export const POST_ADDPRODUCT = "api/product/addProduct";
