@@ -17,6 +17,7 @@
     "formik": "^2.2.9",
     "mui-datatables": "^4.3.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-loader": "^2.4.7",
@@ -32,6 +33,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "json-server": "json-server --watch db.json --port 3500",
+    "start:dev": "npm run json-server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

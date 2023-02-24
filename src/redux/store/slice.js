@@ -95,14 +95,14 @@ export const slice = createSlice ({
         },
         //PRODUCT
 
-        addProduct: (state , action) => {
+        listproduct: (state , action) => {
             return {
                 ...state,
                 action,
             };
         },
-        setAddProduct: (state, action ) => {
-            state.DeleteCategroy = action.payload;
+        setListproduct: (state, action ) => {
+            state.ViewProduct = action.payload;
         },
     },
 });
@@ -126,6 +126,8 @@ export const {
     setEditCategory,
     deleteCategory,
     setDeleteCategory,
+    listproduct,
+    setListproduct
     
 } = slice.actions;
 

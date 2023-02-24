@@ -6,6 +6,7 @@ import Category from "../Category/Category";
 import Dashboard from "../Dashboard/Dashboard";
 import Order from "../Order/Order";
 import Product from "../Product/Product";
+import ProductAdd from "../Product/ProductAdd";
 import Report from "../Report/Report";
 
 const RouterConfig = () => {
@@ -18,10 +19,12 @@ const RouterConfig = () => {
             <Route path="/category" element={<Category />} />
              <Route path="/addCategory" element={<AddAndEdit />} /> 
             <Route path="/editCategory/:id" element={<AddAndEdit />} />
-            <Route path="order" element={<Order />} />
-            <Route path="product" element={<Product />} />
-            <Route path="banner" element={<Banners />} />
-            <Route path="report" element={<Report />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/productadd" element={<ProductAdd />} />
+            <Route path="/productedit/:id" element={<ProductAdd />} />
+            <Route path="/banner" element={<Banners />} />
+            <Route path="/report" element={<Report />} />
             </Routes>
         </Router>
     </>

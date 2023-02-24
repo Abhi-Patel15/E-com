@@ -13,10 +13,10 @@ export const PUT_EDIT_CATEGORY = "api/category/editCategory";
 export const DELETE_CATEGORY = "api/category/deleteCategory";
 
 //product
-export const POST_ADDPRODUCT = "api/product/addProduct";
-export const POST_VIEWPRODUCT ="api/product/viewProduct";
-export const PUT_EDITPRODUCT = "api/product/editProduct/:id";
-export const DELETE_DELETEPROUDUCT = "api/product/deleteProduct/:id";
+export const POST_ADDPRODUCT = "users";
+export const POST_VIEWPRODUCT ="users";
+export const PUT_EDITPRODUCT = "users";
+export const DELETE_DELETEPROUDUCT = "users";
 export const PUT_PRODUCTIMAGE ="api/vendor/productImage/:id";
 
 // BANNER 

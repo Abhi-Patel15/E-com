@@ -10,6 +10,7 @@ import {  deleteCategoryServices,
          getRegistraionOfTabelServices,
          postAddCategoryServices,
          postListOfCategoryServices,
+         prodectServices,
          putEditCategoryServices} from "../../services/services";
 import { addCategory, counOfData,
         deleteCategory,
@@ -17,6 +18,7 @@ import { addCategory, counOfData,
         graphOfData,
         listOfCategory,
         listOfTabel, 
+        listproduct, 
         loginUser, 
         registrationOfTabel, 
         setAddCategory, 
@@ -26,6 +28,7 @@ import { addCategory, counOfData,
         setGraphOfData, 
         setListOfCategory, 
         setListOfTabel, 
+        setListproduct, 
         setRegistrationOfTabel} from "../store/slice";
 
 function* useAuthUserSaga(props) {
@@ -153,6 +156,17 @@ function*deleteCategorySaga (props) {
     console.log(e);
   }
 }
+//product
+function*productListSaga (props) {
+  try{
+    const response = yield call (prodectServices,props)
+    yield put (setListproduct(response))
+    return response;
+  }catch(e) {
+    console.log(e);
+  }
+}
+
 export default function* Saga() {
     yield all([
         yield takeEvery (loginUser.type,useAuthUserSaga),
@@ -164,5 +178,6 @@ export default function* Saga() {
         yield takeEvery (listOfCategory.type,listCategorySaga),
         yield takeEvery (editCategory.type,editCategorySaga),
         yield takeEvery (deleteCategory.type,deleteCategorySaga),
+        yield takeEvery (listproduct.type,productListSaga ),
     ]);
 }

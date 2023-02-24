@@ -6,11 +6,13 @@ import { DELETE_CATEGORY,
          GET_TABAL_LISTOFORDER, 
         POST_CATEGORY_LIST,  
         POST_LISTOFCATEGORY,  
+        POST_VIEWPRODUCT,  
         PUT_EDIT_CATEGORY } from "../api/apiEndpoints";
 import { API } from "../api/generalService";
 import { getToken } from "../Common/Cookies/Cookies";
 
 const url = "http://mahaswari.com:1337";
+const urls = "http://localhost:3500";
 const  token= getToken();
 
 export const getLoginServices = async (params) => {
@@ -137,3 +139,12 @@ export const getLoginServices = async (params) => {
       return e;
     }
   };
+
+  export const prodectServices = async () => {
+    try{
+      const response = await API.get(`${urls}/${POST_VIEWPRODUCT}`);
+      return response.data;
+    }catch (e) {
+      return e;
+    }
+  }

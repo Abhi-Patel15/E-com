@@ -13,27 +13,27 @@ export const Items = [
     },
     {
         name:"Category",
-        path:"category",
+        path:"/category",
         icon:<CategoryRoundedIcon />
     },
     {
         name:"Order",
-        path:"order",
+        path:"/order",
         icon:<TocRoundedIcon />
     },
     {
         name:"Product",
-        path:"product",
+        path:"/product",
         icon:<ProductionQuantityLimitsRoundedIcon />
     },
     {
         name:"Banner",
-        path:"banner",
+        path:"/banner",
         icon:<ViewCarouselRoundedIcon />
     },
     {
         name:"Report",
-        path:"report",
+        path:"/report",
         icon:<ReportRoundedIcon />
     },
 ]
